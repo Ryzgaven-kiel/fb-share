@@ -10,167 +10,176 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: #000;
-            color: #898989;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
-         }
-
-         .wrapper-container {
-            position: relative;
-            z-index: 1;
-         }
-
-         .container {
-            background-color: #0a0a0a;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 20px auto;
-            overflow: auto;
-            transition: all 0.3s ease;
-         }
-
-         .container h1 {
-            color: #343a40;
-         }
-
-         .form-item {
-            padding: 8px;
-         }
-
-         .form-item label {
-            font-size: 13px;
-            color: #495057;
-            margin-bottom: 5px;
-            display: block;
-         }
-
-         input, button {
             background: #000;
-            color: #fff;
-            border: solid 1px #222;
-            box-sizing: border-box;
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 16px;
          }
 
-         button {
-            cursor: pointer;
-            background-color: #ededed;
-            color: #0a0a0a;
-            transition: background-color 0.3s ease;
-         }
-
-         button:hover {
-            background: #CCC;
-         }
-
-         #result {
-            display: none;
-            text-align: center;
-            background-color: #ededed;
-            border: solid 1px #222;
-            padding: 10px;
-            border-radius: 4px;
-            color: #0a0a0a;
-         }
-
-         #processing {
-            margin-top: 20px;
-         }
-
-         /* Neon Light Border */
-         .neon-border {
+         /* Cyberpunk Background Animation */
+         .bg {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             z-index: -1;
-            background: linear-gradient(45deg, #ff0066, #00ccff, #39ff14, #ffcc00);
-            background-size: 400% 400%;
-            animation: neonGlow 5s ease infinite;
-            filter: blur(10px);
+            background: url('https://media.giphy.com/media/7nU0BdmSYHBDK6K0Tc/giphy.gif') no-repeat center center;
+            background-size: cover;
+            animation: bgMovement 8s ease infinite;
          }
 
-         /* Neon glow effect for text */
-         .neon-text {
+         @keyframes bgMovement {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+         }
+
+         .wrapper-container {
+            z-index: 1;
+            text-align: center;
             color: #fff;
-            text-shadow: 
-               0 0 5px #ff0066, 0 0 10px #ff0066, 0 0 20px #ff0066, 
-               0 0 40px #ff0066, 0 0 80px #ff0066, 0 0 90px #ff0066, 
-               0 0 100px #ff0066, 0 0 150px #ff0066;
-            animation: neonGlowText 1.5s ease-in-out infinite alternate;
          }
 
-         @keyframes neonGlow {
-            0% {
-               background-position: 0% 50%;
-            }
-            50% {
-               background-position: 100% 50%;
-            }
-            100% {
-               background-position: 0% 50%;
-            }
+         .container {
+            background-color: rgba(10, 10, 10, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+            margin: 20px auto;
+            transition: transform 0.3s ease;
+            width: 80%;
+            max-width: 500px;
+         }
+
+         .container:hover {
+            transform: scale(1.05);
+         }
+
+         h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #00ffcc;
+            text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 15px #00ffcc;
+         }
+
+         p {
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.6;
+         }
+
+         .neon-text {
+            text-shadow: 
+               0 0 10px #ff00ff, 
+               0 0 20px #ff00ff, 
+               0 0 30px #ff00ff, 
+               0 0 40px #ff00ff, 
+               0 0 50px #ff00ff, 
+               0 0 60px #ff00ff, 
+               0 0 70px #ff00ff;
+            color: #fff;
+         }
+
+         .form-item {
+            padding: 15px;
+            position: relative;
+         }
+
+         .form-item input, .form-item button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 10px;
+            background-color: #111;
+            color: #fff;
+            font-size: 16px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+         }
+
+         .form-item input:focus, .form-item button:focus {
+            outline: none;
+            box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+         }
+
+         .form-item input:hover, .form-item button:hover {
+            background-color: #222;
+            box-shadow: 0 0 10px #ff00ff;
+         }
+
+         .form-item input::placeholder {
+            color: #bbb;
+         }
+
+         .form-item button {
+            cursor: pointer;
+            background-color: #0a0a0a;
+            border: 2px solid #00ffcc;
+            font-weight: bold;
+            color: #00ffcc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+         }
+
+         .form-item button:hover {
+            background-color: #00ffcc;
+            color: #0a0a0a;
+            transform: scale(1.05);
+         }
+
+         #result {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 2px solid #ff00ff;
+            color: #fff;
+            border-radius: 5px;
+         }
+
+         /* Neon Pulse Effect */
+         .pulse {
+            animation: pulseAnimation 1.5s ease-in-out infinite;
+         }
+
+         @keyframes pulseAnimation {
+            0% { box-shadow: 0 0 10px #ff00ff; }
+            50% { box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+            100% { box-shadow: 0 0 10px #ff00ff; }
+         }
+
+         .container h4 {
+            font-size: 24px;
+            color: #ff00ff;
+            margin-bottom: 15px;
+            animation: neonGlowText 2s ease-in-out infinite alternate;
          }
 
          @keyframes neonGlowText {
             0% {
                text-shadow: 
-                  0 0 5px #ff0066, 0 0 10px #ff0066, 0 0 20px #ff0066, 
-                  0 0 40px #ff0066, 0 0 80px #ff0066, 0 0 90px #ff0066, 
-                  0 0 100px #ff0066, 0 0 150px #ff0066;
+                  0 0 10px #ff00ff, 
+                  0 0 20px #ff00ff, 
+                  0 0 30px #ff00ff, 
+                  0 0 40px #ff00ff, 
+                  0 0 50px #ff00ff;
             }
             100% {
                text-shadow: 
-                  0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 20px #00ccff, 
-                  0 0 40px #00ccff, 0 0 80px #00ccff, 0 0 90px #00ccff, 
-                  0 0 100px #00ccff, 0 0 150px #00ccff;
-            }
-         }
-
-         /* Adding animation and transitions for form items */
-         .form-item input, .form-item button {
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-         }
-
-         .form-item input:nth-child(1) {
-            animation-delay: 0.2s;
-         }
-
-         .form-item input:nth-child(2) {
-            animation-delay: 0.4s;
-         }
-
-         .form-item input:nth-child(3) {
-            animation-delay: 0.6s;
-         }
-
-         .form-item input:nth-child(4) {
-            animation-delay: 0.8s;
-         }
-
-         @keyframes fadeIn {
-            from {
-               opacity: 0;
-            }
-            to {
-               opacity: 1;
+                  0 0 10px #00ffcc, 
+                  0 0 20px #00ffcc, 
+                  0 0 30px #00ffcc, 
+                  0 0 40px #00ffcc, 
+                  0 0 50px #00ffcc;
             }
          }
       </style>
    </head>
    <body>
-      <div class="neon-border"></div> <!-- Neon Background Border -->
+      <div class="bg"></div> <!-- Cyberpunk moving background -->
       <div class="wrapper-container">
          <div class="container">
             <h1 class="neon-text">FB-SHAREBOOST</h1>
@@ -180,22 +189,22 @@
             <form onsubmit="submitForm(event)" class="form-container">
                <div class="form-item">
                   <label for="cookies">APPSTATE:</label>
-                  <input type="text" id="cookies" name="cookie" placeholder="">
+                  <input type="text" id="cookies" name="cookie" placeholder="Enter App State...">
                </div>
                <div class="form-item">
                   <label for="urls">POST LINK:</label>
-                  <input type="text" id="urls" name="url" placeholder="">
+                  <input type="text" id="urls" name="url" placeholder="Enter Post Link...">
                </div>
                <div class="form-item">
                   <label for="amounts">LIMIT:</label>
-                  <input type="text" id="amounts" name="amount" placeholder="">
+                  <input type="text" id="amounts" name="amount" placeholder="Limit...">
                </div>
                <div class="form-item">
                   <label for="intervals">DELAY:</label>
-                  <input type="text" id="intervals" name="interval" placeholder="" pattern="[0-9]*">
+                  <input type="text" id="intervals" name="interval" placeholder="Delay in Seconds...">
                </div>
                <div class="form-item">
-                  <button type="submit" id="submit-button">Submit</button>
+                  <button type="submit" id="submit-button" class="pulse">Submit</button>
                </div>
                <div class="form-item">
                   <div id="result"></div>
@@ -205,16 +214,13 @@
          <div class="container" id="process-container">
             <h1 class="neon-text">FB-SHAREBOOST</h1>
             <h4 class="neon-text">PROCESSING:</h4>
-            <div id="processing">
-            </div>
+            <div id="processing"></div>
          </div>
          <div class="container">
-            <h1 class="neon-text">FB-SHAREBOOST</h1>
-            <h4 class="neon-text">ABOUT US</h4>
-            <p class="neon-text">You can find our open-source repository <a href="https://www.pornhub.com" style="text-decoration: none; color: #00ccff;">here</a>, encouraging developers to contribute, learn, and customize the website</p>
+            <h1 class="neon-text">ABOUT US</h1>
+            <p class="neon-text">Find our open-source repository <a href="https://www.pornhub.com" style="text-decoration: none; color: #00ffcc;">here</a> and contribute to making the web better!</p>
          </div>
       </div>
-
       <script>
          async function submitForm(event) {
             event.preventDefault();
@@ -231,9 +237,7 @@
                      amount: document.getElementById('amounts').value,
                      interval: document.getElementById('intervals').value,
                   }),
-                  headers: {
-                     'Content-Type': 'application/json',
-                  },
+                  headers: { 'Content-Type': 'application/json' },
                });
                const data = await response.json();
 
@@ -252,64 +256,6 @@
                console.error(e);
             }
          }
-
-         async function linkOfProcessing() {
-            try {
-               const container = document.getElementById('processing');
-               const processContainer = document.getElementById('process-container');
-               const initialResponse = await fetch('/total');
-
-               if (!initialResponse.ok) {
-                  throw new Error(`Failed to fetch: ${initialResponse.status} - ${initialResponse.statusText}`);
-               }
-
-               const initialData = await initialResponse.json();
-               if (initialData.length === 0) {
-                  processContainer.style.display = 'none';
-                  return;
-               }
-               initialData.forEach((link, index) => {
-
-                  let { url, count, id, target, session } = link;
-                  const processCard = document.createElement('div');
-                  processCard.classList.add('current-online');
-
-                  const text = document.createElement('h4');
-                  text.classList.add('count-text');
-                  text.innerHTML = `${index + 1}. ID: ${id} | ${count}/${target}`;
-
-                  processCard.appendChild(text);
-                  container.appendChild(processCard);
-
-                  const intervalId = setInterval(async () => {
-                     const updateResponse = await fetch('/total');
-
-                     if (!updateResponse.ok) {
-                        console.error(`Failed to fetch update: ${updateResponse.status} - ${updateResponse.statusText}`);
-                        return;
-                     }
-
-                     const updateData = await updateResponse.json();
-                     const updatedLink = updateData.find((link) => link.session === session);
-
-                     if (updatedLink) {
-                        let { count } = updatedLink;
-                        update(processCard, count, id, index, target);
-                     }
-                  }, 1000);
-               });
-
-            } catch (error) {
-               console.error(error);
-            }
-         }
-
-         function update(card, count, id, index, target) {
-            let container = card.querySelector('.count-text');
-            container.textContent = `${index + 1}. ID: ${id} | ${count}/${target}`;
-         }
-
-         linkOfProcessing();
       </script>
    </body>
 </html>
