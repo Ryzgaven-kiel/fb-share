@@ -10,225 +10,211 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            height: 100vh;
-            overflow: hidden;
+            background: #000;
+            color: #898989;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #000;
-         }
-
-         /* Cyberpunk Background Animation */
-         .bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            background: url('https://media.giphy.com/media/7nU0BdmSYHBDK6K0Tc/giphy.gif') no-repeat center center;
-            background-size: cover;
-            animation: bgMovement 8s ease infinite;
-         }
-
-         @keyframes bgMovement {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 100%; }
-         }
-
-         .wrapper-container {
-            z-index: 1;
-            text-align: center;
-            color: #fff;
-         }
-
-         .container {
-            background-color: rgba(10, 10, 10, 0.8);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
-            margin: 20px auto;
-            transition: transform 0.3s ease;
-            width: 80%;
-            max-width: 500px;
-         }
-
-         .container:hover {
-            transform: scale(1.05);
-         }
-
-         h1 {
-            font-size: 36px;
-            font-weight: 700;
-            color: #00ffcc;
-            text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 15px #00ffcc;
-         }
-
-         p {
-            color: #aaa;
-            font-size: 18px;
-            line-height: 1.6;
-         }
-
-         .neon-text {
-            text-shadow: 
-               0 0 10px #ff00ff, 
-               0 0 20px #ff00ff, 
-               0 0 30px #ff00ff, 
-               0 0 40px #ff00ff, 
-               0 0 50px #ff00ff, 
-               0 0 60px #ff00ff, 
-               0 0 70px #ff00ff;
-            color: #fff;
-         }
-
-         .form-item {
-            padding: 15px;
+            height: 100vh;
+            overflow: hidden;
             position: relative;
          }
 
-         .form-item input, .form-item button {
-            width: 100%;
-            padding: 12px;
-            border-radius: 5px;
-            border: none;
-            margin-top: 10px;
-            background-color: #111;
-            color: #fff;
-            font-size: 16px;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            transition: all 0.3s ease;
-         }
-
-         .form-item input:focus, .form-item button:focus {
-            outline: none;
-            box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-         }
-
-         .form-item input:hover, .form-item button:hover {
-            background-color: #222;
-            box-shadow: 0 0 10px #ff00ff;
-         }
-
-         .form-item input::placeholder {
-            color: #bbb;
-         }
-
-         .form-item button {
-            cursor: pointer;
-            background-color: #0a0a0a;
-            border: 2px solid #00ffcc;
+         /* Neon glow for text */
+         .neon-text {
+            font-size: 40px;
             font-weight: bold;
-            color: #00ffcc;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-         }
-
-         .form-item button:hover {
-            background-color: #00ffcc;
-            color: #0a0a0a;
-            transform: scale(1.05);
-         }
-
-         #result {
-            display: none;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #1a1a1a;
-            border: 2px solid #ff00ff;
             color: #fff;
-            border-radius: 5px;
-         }
-
-         /* Neon Pulse Effect */
-         .pulse {
-            animation: pulseAnimation 1.5s ease-in-out infinite;
-         }
-
-         @keyframes pulseAnimation {
-            0% { box-shadow: 0 0 10px #ff00ff; }
-            50% { box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
-            100% { box-shadow: 0 0 10px #ff00ff; }
-         }
-
-         .container h4 {
-            font-size: 24px;
-            color: #ff00ff;
-            margin-bottom: 15px;
-            animation: neonGlowText 2s ease-in-out infinite alternate;
+            text-shadow: 
+               0 0 10px #ff0066, 
+               0 0 20px #ff0066, 
+               0 0 30px #ff0066, 
+               0 0 40px #00ccff,
+               0 0 50px #39ff14,
+               0 0 60px #ffcc00;
+            animation: neonGlowText 1.5s ease-in-out infinite alternate;
          }
 
          @keyframes neonGlowText {
             0% {
                text-shadow: 
-                  0 0 10px #ff00ff, 
-                  0 0 20px #ff00ff, 
-                  0 0 30px #ff00ff, 
-                  0 0 40px #ff00ff, 
-                  0 0 50px #ff00ff;
+                  0 0 10px #ff0066, 
+                  0 0 20px #ff0066, 
+                  0 0 30px #ff0066, 
+                  0 0 40px #00ccff,
+                  0 0 50px #39ff14,
+                  0 0 60px #ffcc00;
             }
             100% {
                text-shadow: 
-                  0 0 10px #00ffcc, 
-                  0 0 20px #00ffcc, 
-                  0 0 30px #00ffcc, 
-                  0 0 40px #00ffcc, 
-                  0 0 50px #00ffcc;
+                  0 0 10px #00ccff, 
+                  0 0 20px #00ccff, 
+                  0 0 30px #00ccff, 
+                  0 0 40px #ff0066,
+                  0 0 50px #39ff14,
+                  0 0 60px #ffcc00;
             }
          }
+
+         /* Glow effect for buttons */
+         button {
+            background: #000;
+            color: #fff;
+            border: 2px solid #222;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+         }
+
+         button:hover {
+            background-color: #222;
+            box-shadow: 0 0 20px rgba(255, 0, 102, 0.8), 0 0 30px rgba(0, 204, 255, 0.8);
+         }
+
+         button:active {
+            transform: scale(0.95);
+         }
+
+         /* Message Box with Neon Glow */
+         .message-box {
+            width: 300px;
+            height: 150px;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 0 20px rgba(255, 0, 102, 0.7);
+            animation: fadeInOut 3s ease-in-out forwards;
+         }
+
+         .message-box p {
+            color: #fff;
+            font-size: 18px;
+         }
+
+         @keyframes fadeInOut {
+            0% {
+               opacity: 0;
+               transform: translateY(-30px);
+            }
+            50% {
+               opacity: 1;
+               transform: translateY(0);
+            }
+            100% {
+               opacity: 0;
+               transform: translateY(30px);
+            }
+         }
+
+         /* Form and inputs styling */
+         .container {
+            background-color: #0a0a0a;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            width: 400px;
+         }
+
+         .form-item {
+            padding: 8px;
+         }
+
+         .form-item label {
+            font-size: 13px;
+            color: #495057;
+            margin-bottom: 5px;
+            display: block;
+         }
+
+         input, button {
+            background: #000;
+            color: #fff;
+            border: 1px solid #222;
+            box-sizing: border-box;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+         }
+
+         /* Submit Button */
+         #submit-button {
+            background: #0a0a0a;
+            color: #fff;
+            border: solid 1px #222;
+            box-sizing: border-box;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+         }
+
+         #submit-button:hover {
+            background-color: #222;
+            box-shadow: 0 0 20px rgba(255, 0, 102, 0.8), 0 0 30px rgba(0, 204, 255, 0.8);
+         }
+
       </style>
    </head>
    <body>
-      <div class="bg"></div> <!-- Cyberpunk moving background -->
       <div class="wrapper-container">
          <div class="container">
             <h1 class="neon-text">FB-SHAREBOOST</h1>
-            <p class="neon-text">A user-friendly automated website that utilizes your browser's cookies to streamline the process of sharing posts on Facebook using the provided URL.</p>
+            <div class="form-wrapper">
+               <form onsubmit="submitForm(event)" class="form-container">
+                  <div class="form-item">
+                     <label for="cookies">APPSTATE:</label>
+                     <input type="text" id="cookies" name="cookie" placeholder="">
+                  </div>
+                  <div class="form-item">
+                     <label for="urls">POST LINK:</label>
+                     <input type="text" id="urls" name="url" placeholder="">
+                  </div>
+                  <div class="form-item">
+                     <label for="amounts">LIMIT:</label>
+                     <input type="text" id="amounts" name="amount" placeholder="">
+                  </div>
+                  <div class="form-item">
+                     <label for="intervals">DELAY:</label>
+                     <input type="text" id="intervals" name="interval" placeholder="" pattern="[0-9]*">
+                  </div>
+                  <div class="form-item">
+                     <button type="submit" id="submit-button">Submit</button>
+                  </div>
+               </form>
+            </div>
          </div>
-         <div class="form-wrapper">
-            <form onsubmit="submitForm(event)" class="form-container">
-               <div class="form-item">
-                  <label for="cookies">APPSTATE:</label>
-                  <input type="text" id="cookies" name="cookie" placeholder="Enter App State...">
-               </div>
-               <div class="form-item">
-                  <label for="urls">POST LINK:</label>
-                  <input type="text" id="urls" name="url" placeholder="Enter Post Link...">
-               </div>
-               <div class="form-item">
-                  <label for="amounts">LIMIT:</label>
-                  <input type="text" id="amounts" name="amount" placeholder="Limit...">
-               </div>
-               <div class="form-item">
-                  <label for="intervals">DELAY:</label>
-                  <input type="text" id="intervals" name="interval" placeholder="Delay in Seconds...">
-               </div>
-               <div class="form-item">
-                  <button type="submit" id="submit-button" class="pulse">Submit</button>
-               </div>
-               <div class="form-item">
-                  <div id="result"></div>
-               </div>
-            </form>
+
+         <div class="message-box" id="message-box">
+            <p id="message-content">Waiting for action...</p>
          </div>
-         <div class="container" id="process-container">
-            <h1 class="neon-text">FB-SHAREBOOST</h1>
-            <h4 class="neon-text">PROCESSING:</h4>
-            <div id="processing"></div>
-         </div>
-         <div class="container">
-            <h1 class="neon-text">ABOUT US</h1>
-            <p class="neon-text">Find our open-source repository <a href="https://www.pornhub.com" style="text-decoration: none; color: #00ffcc;">here</a> and contribute to making the web better!</p>
-         </div>
+
+         <button onclick="toggleMessageBox()">Show Log</button>
       </div>
+
       <script>
          async function submitForm(event) {
             event.preventDefault();
-            const result = document.getElementById('result');
+            const result = document.getElementById('message-content');
+            const messageBox = document.getElementById('message-box');
             const button = document.getElementById('submit-button');
+            
             try {
-               result.style.display = 'block';
-               button.style.display = 'none';
+               button.disabled = true;
+               result.innerText = 'Submitting...';
+               messageBox.style.display = 'block';
+
                const response = await fetch('/api/submit', {
                   method: 'POST',
                   body: JSON.stringify({
@@ -237,24 +223,29 @@
                      amount: document.getElementById('amounts').value,
                      interval: document.getElementById('intervals').value,
                   }),
-                  headers: { 'Content-Type': 'application/json' },
+                  headers: {
+                     'Content-Type': 'application/json',
+                  },
                });
+
                const data = await response.json();
 
                if (data.status === 200) {
-                  result.style.backgroundColor = '#32ff0dc7';
-                  result.style.color = '#222';
-                  result.innerHTML = 'Submitted successfully!';
-                  button.style.display = 'block';
+                  result.innerText = 'Submission successful!';
                } else {
-                  result.style.backgroundColor = '#3D1619';
-                  result.style.color = '#FE6265';
-                  result.innerHTML = 'Error: ' + data.error;
-                  button.style.display = 'block';
+                  result.innerText = `Error: ${data.error}`;
                }
+               button.disabled = false;
             } catch (e) {
                console.error(e);
+               result.innerText = 'Submission failed. Try again.';
+               button.disabled = false;
             }
+         }
+
+         function toggleMessageBox() {
+            const messageBox = document.getElementById('message-box');
+            messageBox.style.display = messageBox.style.display === 'none' ? 'block' : 'none';
          }
       </script>
    </body>
