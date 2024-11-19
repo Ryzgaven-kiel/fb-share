@@ -28,7 +28,7 @@ app.post('/api/submit', async (req, res) => {
     interval,
   } = req.body;
   if (!cookie || !url || !amount || !interval) return res.status(400).json({
-    error: 'Missing state, url, amount, or interval'
+    error: 'Missing states, url, amount, or interval'
   });
   try {
     const cookies = await convertCookie(cookie);
