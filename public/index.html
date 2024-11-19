@@ -20,6 +20,12 @@
             position: relative;
          }
 
+         /* Fullscreen background gif */
+         body {
+            background: url('https://giphy.com/gifs/loop-glitch-matrix-3og0ILLVvPp8d64Jd6') no-repeat center center fixed;
+            background-size: cover;
+         }
+
          /* Neon glow for text */
          .neon-text {
             font-size: 40px;
@@ -33,6 +39,7 @@
                0 0 50px #39ff14,
                0 0 60px #ffcc00;
             animation: neonGlowText 1.5s ease-in-out infinite alternate;
+            z-index: 2;
          }
 
          @keyframes neonGlowText {
@@ -56,6 +63,27 @@
             }
          }
 
+         /* Moving text (Chanchan/Jco) in background */
+         .moving-text {
+            position: absolute;
+            top: 20px;
+            left: -100%;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            animation: moveText 10s linear infinite;
+            z-index: 1;
+         }
+
+         @keyframes moveText {
+            0% {
+               left: -100%;
+            }
+            100% {
+               left: 100%;
+            }
+         }
+
          /* Glow effect for buttons */
          button {
             background: #000;
@@ -67,7 +95,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
-            z-index: 1;
+            z-index: 2;
          }
 
          button:hover {
@@ -91,6 +119,7 @@
             display: none;
             box-shadow: 0 0 20px rgba(255, 0, 102, 0.7);
             animation: fadeInOut 3s ease-in-out forwards;
+            z-index: 2;
          }
 
          .message-box p {
@@ -115,11 +144,12 @@
 
          /* Form and inputs styling */
          .container {
-            background-color: #0a0a0a;
+            background-color: rgba(10, 10, 10, 0.8);
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
             width: 400px;
+            z-index: 2;
          }
 
          .form-item {
@@ -168,39 +198,39 @@
       </style>
    </head>
    <body>
-      <div class="wrapper-container">
-         <div class="container">
-            <h1 class="neon-text">FB-SHAREBOOST</h1>
-            <div class="form-wrapper">
-               <form onsubmit="submitForm(event)" class="form-container">
-                  <div class="form-item">
-                     <label for="cookies">APPSTATE:</label>
-                     <input type="text" id="cookies" name="cookie" placeholder="">
-                  </div>
-                  <div class="form-item">
-                     <label for="urls">POST LINK:</label>
-                     <input type="text" id="urls" name="url" placeholder="">
-                  </div>
-                  <div class="form-item">
-                     <label for="amounts">LIMIT:</label>
-                     <input type="text" id="amounts" name="amount" placeholder="">
-                  </div>
-                  <div class="form-item">
-                     <label for="intervals">DELAY:</label>
-                     <input type="text" id="intervals" name="interval" placeholder="" pattern="[0-9]*">
-                  </div>
-                  <div class="form-item">
-                     <button type="submit" id="submit-button">Submit</button>
-                  </div>
-               </form>
-            </div>
-         </div>
+      <div class="moving-text">
+         Made by: Jco
+      </div>
 
-         <div class="message-box" id="message-box">
-            <p id="message-content">Waiting for action...</p>
+      <div class="container">
+         <h1 class="neon-text">FB-SHAREBOOST</h1>
+         <div class="form-wrapper">
+            <form onsubmit="submitForm(event)" class="form-container">
+               <div class="form-item">
+                  <label for="cookies">APPSTATE:</label>
+                  <input type="text" id="cookies" name="cookie" placeholder="">
+               </div>
+               <div class="form-item">
+                  <label for="urls">POST LINK:</label>
+                  <input type="text" id="urls" name="url" placeholder="">
+               </div>
+               <div class="form-item">
+                  <label for="amounts">LIMIT:</label>
+                  <input type="text" id="amounts" name="amount" placeholder="">
+               </div>
+               <div class="form-item">
+                  <label for="intervals">DELAY:</label>
+                  <input type="text" id="intervals" name="interval" placeholder="" pattern="[0-9]*">
+               </div>
+               <div class="form-item">
+                  <button type="submit" id="submit-button">Submit</button>
+               </div>
+            </form>
          </div>
+      </div>
 
-         <button onclick="toggleMessageBox()">Show Log</button>
+      <div class="message-box" id="message-box">
+         <p id="message-content">Waiting for action...</p>
       </div>
 
       <script>
@@ -242,11 +272,7 @@
                button.disabled = false;
             }
          }
-
-         function toggleMessageBox() {
-            const messageBox = document.getElementById('message-box');
-            messageBox.style.display = messageBox.style.display === 'none' ? 'block' : 'none';
-         }
       </script>
    </body>
-</html>
+   </html>
+   
