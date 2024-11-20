@@ -145,10 +145,10 @@
          }
 
          .count-text {
-            font-size: 18px;
-            font-weight: 600;
-            color: #ff5722;
-            text-shadow: 0 0 5px #ff9800, 0 0 10px #ff9800;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffeb3b;  /* Lighter yellow color */
+            text-shadow: 0 0 5px #ff9800, 0 0 15px #ff9800;
          }
 
          .history-container {
@@ -158,12 +158,32 @@
             border-radius: 10px;
             box-shadow: 0 0 10px #ff9800;
             color: #fff;
+            width: 80%;
+            max-width: 600px;
          }
 
          .history-entry {
-            font-size: 14px;
+            font-size: 16px;
             color: #ff9800;
             margin-bottom: 10px;
+            font-weight: 600;
+         }
+
+         .history-entry .count {
+            font-size: 30px;  /* Larger font size */
+            color: #ffeb3b;   /* Lighter yellow color */
+            font-weight: 800;  /* Bold */
+            text-shadow: 0 0 5px #ff9800, 0 0 15px #ff9800; /* Glow effect */
+         }
+
+         .history-entry .url {
+            font-size: 14px;
+            color: #ffffff;
+            font-style: italic;
+            max-width: 300px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
          }
 
          .surprise {
@@ -229,32 +249,41 @@
          </div>
 
          <!-- History Form -->
-         <div class="history-container" id="historyContainer" style="display: none;">
-            <h4>User History</h4>
+         <div class="history-container" id="historyContainer" style="display:none;">
+            <h2>History</h2>
             <div id="historyLog"></div>
             <button onclick="backToForm()">Back to Form</button>
-         </div>
-
-         <div class="surprise" id="surpriseMessage">
-            🎉 Surprise Bonus Unlocked! 🎉
          </div>
       </div>
 
       <script>
-         let currentCount = 0;
          let totalCount = 0;
-         const history = [];
+         let history = [];
 
-         function saveHistory(postUrl, count) {
-            history.push({ url: postUrl, count: count, time: new Date().toISOString() });
+         function saveHistory(url, count) {
+            history.push({ url, count });
             localStorage.setItem('history', JSON.stringify(history));
+            displayHistory();
+         }
+
+         function shortenUrl(url) {
+            const maxLength = 30; // Limit length for URLs
+            if (url.length > maxLength) {
+               return url.substring(0, maxLength) + '...';
+            }
+            return url;
          }
 
          function displayHistory() {
             const historyLog = document.getElementById('historyLog');
             historyLog.innerHTML = '';
             history.forEach(entry => {
-               historyLog.innerHTML += `<div class="history-entry">${entry.url} - Share Count: ${entry.count} / ${totalCount}</div>`;
+               const shortenedUrl = shortenUrl(entry.url);
+               historyLog.innerHTML += `
+                  <div class="history-entry">
+                     <div class="url">${shortenedUrl}</div>
+                     <div class="count">Share Count: <span class="count-text">${entry.count} / ${totalCount}</span></div>
+                  </div>`;
             });
          }
 
@@ -327,4 +356,4 @@
       </script>
    </body>
    </html>
-                                                          
+   
