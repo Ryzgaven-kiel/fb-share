@@ -18,13 +18,10 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
+            transition: background-color 1s ease;
          }
 
-         body {
-            background: url('https://giphy.com/gifs/loop-glitch-matrix-3og0ILLVvPp8d64Jd6') no-repeat center center fixed;
-            background-size: cover;
-         }
-
+         /* Neon glow for text */
          .neon-text {
             font-size: 40px;
             font-weight: bold;
@@ -37,7 +34,6 @@
                0 0 50px #39ff14,
                0 0 60px #ffcc00;
             animation: neonGlowText 1.5s ease-in-out infinite alternate;
-            z-index: 2;
          }
 
          @keyframes neonGlowText {
@@ -61,69 +57,7 @@
             }
          }
 
-         .share-count-wrapper {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-         }
-
-         .share-box {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 180px;
-            margin-right: 20px;
-         }
-
-         .share-count {
-            font-size: 18px;
-            color: #fff;
-            margin-bottom: 10px;
-         }
-
-         .status-bar {
-            width: 200px;
-            height: 20px;
-            background-color: #555;
-            border-radius: 10px;
-            position: relative;
-            margin-top: 10px;
-         }
-
-         .status-bar .progress {
-            width: 0%;
-            height: 100%;
-            background-color: #39ff14;
-            border-radius: 10px;
-         }
-
-         .active-session {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: 200px;
-         }
-
-         .active-session h3 {
-            color: #fff;
-            font-size: 18px;
-            margin-bottom: 10px;
-         }
-
-         .session-info {
-            color: #fff;
-            font-size: 14px;
-         }
-
+         /* Glow effect for buttons */
          button {
             background: #000;
             color: #fff;
@@ -133,8 +67,6 @@
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
          }
 
          button:hover {
@@ -146,13 +78,64 @@
             transform: scale(0.95);
          }
 
+         /* Progress bar styling */
+         .progress-container {
+            width: 100%;
+            height: 20px;
+            background-color: #444;
+            border-radius: 10px;
+            margin-top: 10px;
+         }
+
+         .progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: #39ff14;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+         }
+
+         /* Message Box with Neon Glow */
+         .message-box {
+            width: 300px;
+            height: 150px;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 0 20px rgba(255, 0, 102, 0.7);
+            animation: fadeInOut 3s ease-in-out forwards;
+         }
+
+         .message-box p {
+            color: #fff;
+            font-size: 18px;
+         }
+
+         @keyframes fadeInOut {
+            0% {
+               opacity: 0;
+               transform: translateY(-30px);
+            }
+            50% {
+               opacity: 1;
+               transform: translateY(0);
+            }
+            100% {
+               opacity: 0;
+               transform: translateY(30px);
+            }
+         }
+
+         /* Form and inputs styling */
          .container {
-            background-color: rgba(10, 10, 10, 0.8);
+            background-color: #0a0a0a;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
             width: 400px;
-            z-index: 2;
          }
 
          .form-item {
@@ -178,6 +161,7 @@
             font-size: 16px;
          }
 
+         /* Submit Button */
          #submit-button {
             background: #0a0a0a;
             color: #fff;
@@ -196,88 +180,84 @@
             background-color: #222;
             box-shadow: 0 0 20px rgba(255, 0, 102, 0.8), 0 0 30px rgba(0, 204, 255, 0.8);
          }
+         
+         /* Smooth scroll to the message box */
+         .scroll-to-log {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff0066;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+         }
       </style>
    </head>
    <body>
-      <div class="moving-text">
-         Made by: Jco
-      </div>
+      <div class="wrapper-container">
+         <div class="container">
+            <h1 class="neon-text">FB-SHAREBOOST</h1>
+            <div class="form-wrapper">
+               <form onsubmit="submitForm(event)" class="form-container">
+                  <div class="form-item">
+                     <label for="cookies">APPSTATE:</label>
+                     <input type="text" id="cookies" name="cookie" placeholder="">
+                  </div>
+                  <div class="form-item">
+                     <label for="urls">POST LINK:</label>
+                     <input type="text" id="urls" name="url" placeholder="">
+                  </div>
+                  <div class="form-item">
+                     <label for="amounts">LIMIT:</label>
+                     <input type="text" id="amounts" name="amount" placeholder="">
+                  </div>
+                  <div class="form-item">
+                     <label for="intervals">DELAY:</label>
+                     <input type="text" id="intervals" name="interval" placeholder="" pattern="[0-9]*">
+                  </div>
+                  <div class="form-item">
+                     <button type="submit" id="submit-button">Submit</button>
+                  </div>
+               </form>
+            </div>
 
-      <div class="share-count-wrapper">
-         <div class="share-box">
-            <div class="share-count" id="share-count">Shares: 0</div>
-            <div class="status-bar"><div class="progress" id="progress"></div></div>
-         </div>
-         <div class="active-session" id="active-session">
-            <h3>Active Session</h3>
-            <div class="session-info" id="session-info">Waiting for session...</div>
-         </div>
-      </div>
+            <!-- Progress Bar -->
+            <div class="progress-container">
+               <div class="progress-bar" id="progress-bar"></div>
+            </div>
 
-      <div class="container">
-         <h1 class="neon-text">FB-SHAREBOOST</h1>
-         <div class="form-wrapper">
-            <form onsubmit="submitForm(event)" class="form-container">
-               <div class="form-item">
-                  <label for="cookies">APPSTATE:</label>
-                  <input type="text" id="cookies" name="cookie" placeholder="">
-               </div>
-               <div class="form-item">
-                  <label for="urls">POST LINK:</label>
-                  <input type="text" id="urls" name="url" placeholder="">
-               </div>
-               <div class="form-item">
-                  <label for="amounts">LIMIT:</label>
-                  <input type="text" id="amounts" name="amount" placeholder="">
-               </div>
-               <div class="form-item">
-                  <label for="intervals">DELAY:</label>
-                  <input type="text" id="intervals" name="interval" placeholder="" pattern="[0-9]*">
-               </div>
-               <div class="form-item">
-                  <button type="submit" id="submit-button">Submit</button>
-               </div>
-            </form>
-         </div>
-      </div>
+            <div class="message-box" id="message-box">
+               <p id="message-content">Waiting for action...</p>
+            </div>
 
-      <div class="message-box" id="message-box">
-         <p id="message-content">Waiting for action...</p>
+         </div>
+
+         <button class="scroll-to-log" onclick="toggleMessageBox()">Show Log</button>
       </div>
 
       <script>
-         let shareCount = 0;
-         let sessionActive = false;
-
          async function submitForm(event) {
             event.preventDefault();
             const result = document.getElementById('message-content');
             const messageBox = document.getElementById('message-box');
+            const progressBar = document.getElementById('progress-bar');
             const button = document.getElementById('submit-button');
-            const progress = document.getElementById('progress');
-            const shareCountElement = document.getElementById('share-count');
-            const sessionInfo = document.getElementById('session-info');
-            
-            const userLink = document.getElementById('urls').value;
-            const userLimit = document.getElementById('amounts').value;
-
-            if (!userLink || !userLimit) {
-                alert('Please provide both link and limit.');
-                return;
-            }
-
-            sessionActive = true;
-            sessionInfo.innerHTML = `URL: ${userLink}<br>Limit: ${userLimit}`;
             
             try {
                button.disabled = true;
                result.innerText = 'Submitting...';
                messageBox.style.display = 'block';
 
-               let interval = setInterval(() => {
+               let shareCount = 0;
+               const userLimit = parseInt(document.getElementById('amounts').value);
+
+               const interval = setInterval(() => {
                   shareCount++;
-                  shareCountElement.innerText = `Shares: ${shareCount}`;
-                  progress.style.width = `${(shareCount / userLimit) * 100}%`;
+                  progressBar.style.width = `${(shareCount / userLimit) * 100}%`;
 
                   if (shareCount >= userLimit) {
                      clearInterval(interval);
@@ -285,14 +265,18 @@
                      button.disabled = false;
                   }
                }, 1000);
-
             } catch (e) {
                console.error(e);
                result.innerText = 'Submission failed. Try again.';
                button.disabled = false;
             }
          }
+
+         function toggleMessageBox() {
+            const messageBox = document.getElementById('message-box');
+            messageBox.style.display = messageBox.style.display === 'none' ? 'block' : 'none';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+         }
       </script>
    </body>
-                                       </html>
-   
+</html>
