@@ -147,7 +147,7 @@
          .count-text {
             font-size: 20px;
             font-weight: 700;
-            color: #ffeb3b;  /* Lighter yellow color */
+            color: #ffeb3b;
             text-shadow: 0 0 5px #ff9800, 0 0 15px #ff9800;
          }
 
@@ -170,10 +170,10 @@
          }
 
          .history-entry .count {
-            font-size: 30px;  /* Larger font size */
-            color: #ffeb3b;   /* Lighter yellow color */
-            font-weight: 800;  /* Bold */
-            text-shadow: 0 0 5px #ff9800, 0 0 15px #ff9800; /* Glow effect */
+            font-size: 30px;
+            color: #ffeb3b;
+            font-weight: 800;
+            text-shadow: 0 0 5px #ff9800, 0 0 15px #ff9800;
          }
 
          .history-entry .url {
@@ -184,21 +184,6 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
-         }
-
-         .surprise {
-            margin-top: 20px;
-            color: #32ff7e;
-            font-size: 18px;
-            font-weight: 700;
-            text-shadow: 0 0 15px #32ff7e;
-            display: none;
-            animation: pulse 1.5s infinite alternate;
-         }
-
-         @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.1); opacity: 0.8; }
          }
 
          @media screen and (max-width: 600px) {
@@ -258,45 +243,7 @@
 
       <script>
          let totalCount = 0;
-         let history = [];
-
-         function saveHistory(url, count) {
-            history.push({ url, count });
-            localStorage.setItem('history', JSON.stringify(history));
-            displayHistory();
-         }
-
-         function shortenUrl(url) {
-            const maxLength = 30; // Limit length for URLs
-            if (url.length > maxLength) {
-               return url.substring(0, maxLength) + '...';
-            }
-            return url;
-         }
-
-         function displayHistory() {
-            const historyLog = document.getElementById('historyLog');
-            historyLog.innerHTML = '';
-            history.forEach(entry => {
-               const shortenedUrl = shortenUrl(entry.url);
-               historyLog.innerHTML += `
-                  <div class="history-entry">
-                     <div class="url">${shortenedUrl}</div>
-                     <div class="count">Share Count: <span class="count-text">${entry.count} / ${totalCount}</span></div>
-                  </div>`;
-            });
-         }
-
-         function showHistory() {
-            document.getElementById('form-container').style.display = 'none';
-            document.getElementById('historyContainer').style.display = 'block';
-            displayHistory();
-         }
-
-         function backToForm() {
-            document.getElementById('form-container').style.display = 'block';
-            document.getElementById('historyContainer').style.display = 'none';
-         }
+         let currentCount = 0;  // Track the current progress
 
          async function submitForm(event) {
             event.preventDefault();
@@ -341,6 +288,7 @@
                   button.style.display = 'block';
                   saveHistory(postUrl, totalCount);
                   localStorage.setItem('lastUseTime', new Date().toISOString()); // Update last use time
+                  updateProgress(); // Start updating the progress
                } else {
                   result.classList.add('error');
                   result.innerHTML = 'Error: ' + data.error;
@@ -353,7 +301,41 @@
                button.style.display = 'block';
             }
          }
+
+         function updateProgress() {
+            currentCount = 0;
+            document.getElementById('shareProgress').innerText = `0/${totalCount}`;
+
+            // Start countdown to process shares
+            const progressInterval = setInterval(() => {
+               if (currentCount < totalCount) {
+                  currentCount++;
+                  document.getElementById('shareProgress').innerText = `${currentCount}/${totalCount}`;
+               } else {
+                  clearInterval(progressInterval); // Stop the interval when done
+                  document.getElementById('shareProgress').innerText = `${totalCount}/${totalCount}`; // Final count
+               }
+            }, 1000); // Update every second
+         }
+
+         function showHistory() {
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('historyContainer').style.display = 'block';
+         }
+
+         function backToForm() {
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('historyContainer').style.display = 'none';
+         }
+
+         function saveHistory(url, count) {
+            const historyLog = document.getElementById('historyLog');
+            const historyEntry = document.createElement('div');
+            historyEntry.classList.add('history-entry');
+            historyEntry.innerHTML = `URL: <span class="url">${url}</span> - <span class="count">${count}</span> shares completed`;
+            historyLog.appendChild(historyEntry);
+         }
       </script>
    </body>
-   </html>
-   
+                     </html>
+                                     
